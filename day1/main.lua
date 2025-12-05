@@ -1,1 +1,0 @@
-require "day1.part2.main"

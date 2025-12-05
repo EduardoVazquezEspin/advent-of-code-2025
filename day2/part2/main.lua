@@ -2,6 +2,7 @@ require "day2.InputReader"
 require "day2.common"
 require "helpers.helpers"
 
+---@class Day2.reader : Day2.InputReader
 local reader = InputReader:new()
 
 local input = reader:read("./day2/part2/input.txt")

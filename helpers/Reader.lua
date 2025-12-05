@@ -3,15 +3,16 @@ require "helpers.InheritanceObject"
 ---@class Reader : InheritanceObject
 Reader = InheritanceObject:new()
 
--- see if the file exists
+---@param path string
+---@return boolean
 function Reader:file_exists(path)
   local f = io.open(path, "rb")
   if f then f:close() end
   return f ~= nil
 end
 
--- get all lines from a file, returns an empty 
--- list/table if the file does not exist
+---@param path string
+---@return table<number, string>
 function Reader:read_file(path)
   if not self:file_exists(path) then return {} end
   local lines = {}
