@@ -1,6 +1,5 @@
 require "day1.InputReader"
 require "day1.SlowDial"
-require "helpers.helpers"
 
 local reader = InputReader:new()
 
@@ -16,4 +15,4 @@ for i=1,#input do
     end
 end
 
-print(dial.zero_counter)
+print(dial.zero_counter) -- 6
