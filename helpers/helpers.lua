@@ -2,6 +2,9 @@ if bit32 == nil then -- love2D and lua 5.3.3 have different compatibilities
     bit32 = require("bit")
 end
 
+---@generic T : table
+---@param orig T
+---@return T
 function deepcopy(orig)
     local orig_type = type(orig)
     local copy
@@ -65,10 +68,15 @@ function stringifytable_flat(table, seen)
     end
 end
 
+---@param table table
+---@return string
 function stringifytable(table)
     return stringifytable_withdepth(table, 0, 0, {})
 end
 
+---@param table1 table
+---@param table2 table
+---@return boolean
 function tableequals(table1, table2)
     if type(table1) ~= type(table2) then
         return false
@@ -91,6 +99,9 @@ function tableequals(table1, table2)
     end
 end
 
+---@param inputstr string
+---@param sep string
+---@return {[number]: string}
 function stringsplit (inputstr, sep)
     if sep == nil then
             sep = "%s"
