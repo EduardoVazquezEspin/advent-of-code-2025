@@ -1,6 +1,6 @@
 require "helpers.InheritanceObject"
 
----@class Dial : InheritanceObject
+---@class SlowDial : InheritanceObject
 ---@field value integer
 SlowDial = InheritanceObject:new({value = 50, zero_counter = 0})
 

@@ -1,0 +1,1 @@
+---@alias Array<T> {[integer]: T}
