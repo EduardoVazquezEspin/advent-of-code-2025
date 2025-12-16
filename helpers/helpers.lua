@@ -1,7 +1,3 @@
-if bit32 == nil then -- love2D and lua 5.3.3 have different compatibilities
-    bit32 = require("bit")
-end
-
 ---@generic T : table
 ---@param orig T
 ---@return T

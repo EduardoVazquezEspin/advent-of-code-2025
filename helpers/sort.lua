@@ -56,3 +56,36 @@ function quicksort(array, comparer, start, stop)
     quicksort(array, comparer, start, pivot_index)
     quicksort(array, comparer, pivot_index + 1, stop)
 end
+
+---@generic T
+---@param nodes {[number]: T}
+---@param get_children function(node: T): {[number]: T}
+---@return {[number]: T}
+function topological_sort(nodes, get_children)
+  local result = {}
+  ---@type {[number]: {["type"]: "eval"|"add", ["node"]: T}}
+  local stack = {}
+  for i=1,#nodes do
+    stack[#stack + 1] = {type = "eval", node = nodes[i]}
+  end
+  ---@type {[T]: boolean}
+  local visited = {}
+  ---@type {["type"]: "eval"|"add", ["node"]: T} | nil
+  local top = stack[#stack] 
+  stack[#stack] = nil
+  while top ~= nil do
+    if top.type == "add" then
+        result[#result + 1] = top.node
+    elseif visited[top.node] == nil then
+        visited[top.node] = true
+        stack[#stack + 1]= {type = "add", node = top.node}
+        local children = get_children(top.node)
+        for i = 1, #children do
+            stack[#stack + 1] = {type = "eval", node = children[i]}
+        end
+    end
+    top = stack[#stack]
+    stack[#stack] = nil
+  end
+  return result
+end
