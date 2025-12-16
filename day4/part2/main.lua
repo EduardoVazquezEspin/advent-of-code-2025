@@ -16,7 +16,7 @@ while any_paper_removed do
         for j=1,map.width do
             if map:get(i, j) then
                 ---@type {[number]: boolean}
-                local adj = map:adjacents(i, j)
+                local adj = map:get_adjacents(i, j)
                 local adjacent_papers = 0
                 for t=1,#adj do
                     if adj[t] then
